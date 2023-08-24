@@ -1,0 +1,2 @@
+# TheDjangoBlog
+A Django Project
