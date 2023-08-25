@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block content %}
+
+
+<div class="container-fluid mt-4" >
+    <div class=" mx-4 text-2xl">Sign Up</div>
+    
+    <div class="flex flex-col items-center w-full p-4">
+    <form action="" method="post">{% csrf_token %}
+            <div class="flex flex-col  w-96 p-4" >{{ form }}</div>
+            <button class="bg-slate-500 p-2 mx-4 text-yellow-50" type="submit">Sign In</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock content %}

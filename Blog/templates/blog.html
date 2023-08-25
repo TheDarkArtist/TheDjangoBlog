@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock title %}
+
+{% block content %}
+<div class="py-4 text-2xl">Blogs</div>
+{{blog}}
+<div class="p-4">
+    <ul class='list-disc' >
+    {% if blogs %}
+        {% for blog in blogs %}
+            <a  href="{% url 'blog_detail' blog.id %}"><li class='py-1 hover:text-blue-700' >{{blog}}</li></a>
+        {% endfor %}
+        {% else %}
+        <li>No blogs yet</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock content %}
