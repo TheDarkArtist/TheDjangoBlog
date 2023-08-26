@@ -2,7 +2,9 @@ from django.views.generic import TemplateView, DetailView, ListView
 
 from .models import BlogPost
 
-class HomeView(TemplateView):
+class HomeView(ListView):
+    model = BlogPost
+    context_object_name = 'blogs'
     template_name = "home.html"
 
 class BlogListView(ListView):

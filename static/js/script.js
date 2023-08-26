@@ -1,16 +1,13 @@
+const navProfileIcon = document.querySelector('#navProfileIcon');
+const navProfileIconMenu = document.getElementById('navProfileIconMenu')
+const sidebarBtn = document.getElementById('sidebarBtn')
+const sidebar = document.getElementById('sidebar')
 
-// const navProfileIcon = document.querySelector('#navProfileIcon');
-// const navProfileIconMenu = document.getElementById('navProfileIconMenu')
+navProfileIcon.addEventListener('click',()=>{
+    navProfileIconMenu.classList.toggle('hidden')
+});
 
+sidebarBtn.addEventListener('click',()=>{
+    sidebar.classList.toggle('hidden')      
+});
 
-// console.log(navProfileIconMenu.style);
-
-// navProfileIcon.addEventListener('click',()=>{
-//     if(navProfileIconMenu.style.display == 'hidden'){
-//         navProfileIconMenu.style.display == 'fixed';
-//     }
-//     else
-//     navProfileIconMenu.style.disply == hidden
-// });
-
-// 
