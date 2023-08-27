@@ -953,6 +953,10 @@ select {
   padding-bottom: 1rem;
 }
 
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
 .pr-1 {
   padding-right: 0.25rem;
 }
@@ -961,32 +965,12 @@ select {
   padding-top: 3rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
-}
-
-.pl-2 {
-  padding-left: 0.5rem;
-}
-
 .text-right {
   text-align: right;
 }
 
 .indent-4 {
   text-indent: 1rem;
-}
-
-.indent-3 {
-  text-indent: 0.75rem;
-}
-
-.indent-8 {
-  text-indent: 2rem;
-}
-
-.indent-5 {
-  text-indent: 1.25rem;
 }
 
 .text-2xl {
