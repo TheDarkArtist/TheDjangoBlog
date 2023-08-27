@@ -29,6 +29,9 @@
           <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
             <a href="{% url 'contact' %}">Contact</a>
           </li>
+          <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
+            <a href="{% url 'apihome' %}">API</a>
+          </li>
         </ul>
         <span class="flex cursor-pointer" id="navProfileIcon">
           <span class="py-4 font-extrabold"
@@ -72,14 +75,14 @@
                 </span>
               </div>
               <div class='border border-black w-full'> </div>
-              <a href="{% url 'account_logout' %}"
+              <a href="{% url 'logout' %}"
                 ><li class="hover:bg-cyan-600 p-1">Logout</li></a
               >
               {% else %}
-              <a href="{% url 'account_login' %}"
+              <a href="{% url 'login' %}"
                 ><li class="hover:bg-cyan-600 p-1">Login</li></a
               >
-              <a href="{% url 'account_signup' %}"
+              <a href="{% url 'signup' %}"
                 ><li class="hover:bg-cyan-600 p-1">Sign Up</li></a
               >
               {% endif %}
@@ -94,6 +97,7 @@
         <a href="{% url 'blog' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>Blog</div></a>
         <a href="{% url 'about' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>About</div></a>
         <a href="{% url 'contact' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>Contact</div></a>
+        <a href="{% url 'apihome' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>API</div></a>
         
       </div>
       <div class="border border-cyan-500 p-1 m-2 min-h-[92vh]">

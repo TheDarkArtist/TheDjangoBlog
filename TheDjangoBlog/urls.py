@@ -19,7 +19,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
+    path('user/', include('django.contrib.auth.urls')),
+    path('user/', include('Accounts.urls')),
+    path('api/', include('Api.urls')),
     path('', include('Blog.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
 ]

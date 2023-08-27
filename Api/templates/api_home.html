@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}API{% endblock title %}
+
+{% block content %}
+<div class='text-2xl' >Welcome The TheDjangoBlog's API</div>
+<div class="border-t border-cyan-600 my-4"></div>
+<div class='text-cyan-950 py-4' >ACCESS THE API</div>
+<div>
+    <ul >
+        <li class='py-1 indent-4' ><span>Endpoints: </span> <a class='pl-2 underline hover:text-cyan-950' href="{% url 'apibloglist' %}">api/v2/</a></li> 
+
+        <li class='py-1 indent-4' ><span>Schema: </span> <a class='pl-2 underline hover:text-cyan-950' href="{% url 'schema' %}">api/v2/schema</a></li> 
+
+        <li class='py-1 indent-4' ><span>Redoc Docs: </span> <a class='pl-2 underline hover:text-cyan-950' href="{% url 'schema_redoc' %}">api/v2/schema/redoc</a></li> 
+
+        <li class='py-1 indent-4' ><span>Swagger Docs: </span> <a class='pl-2 underline hover:text-cyan-950' href="{% url 'schema_swagger' %}">api/v2/schema/swagger</a></li> 
+       
+    </ul>
+</div>
+{% endblock content %}

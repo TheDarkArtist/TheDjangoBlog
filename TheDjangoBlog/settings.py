@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,11 +44,17 @@ INSTALLED_APPS = [
     'Blog.apps.BlogConfig',
     'Api.apps.ApiConfig',
     # 3rd Party
+    'rest_framework',
+    'corsheaders',
     'allauth',
     'allauth.account',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
     'tailwind',
     'theme',
-    'django_browser_reload'
+    'django_browser_reload',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -148,8 +156,39 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+#CORS Configs
+CORS_ORIGIN_WHITELIST = (
+"http://localhost:3000",
+"http://localhost:8000",
+)
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+# Rest Framework Configs
+REST_FRAMEWORK = {
+"DEFAULT_PERMISSION_CLASSES": [
+"rest_framework.permissions.IsAuthenticated",
+ # new
+],
+"DEFAULT_AUTHENTICATION_CLASSES":[
+"rest_framework.authentication.SessionAuthentication",
+"rest_framework.authentication.TokenAuthentication",
+],
+"DEFAULT_SCHEMA_CLASS":"drf_spectacular.openapi.AutoSchema",
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SITE_ID = 1
 
 # Auth User Model 
 AUTH_USER_MODEL = 'Accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+# Spectular congig
+SPECTULAR_SETTINGS = {
+    "TITLE":'Blog Api Project',
+    "DESCRIPTION":'A simple blog to learn about DRF',
+    'VERSION':'1.0.0',
+
+}
