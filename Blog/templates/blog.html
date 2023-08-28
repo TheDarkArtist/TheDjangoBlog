@@ -9,7 +9,7 @@
     <ul class='list-disc' >
     {% if blogs %}
         {% for blog in blogs %}
-            <a  href="{% url 'blog_detail' blog.id %}"><li class='py-1 hover:text-blue-700' >{{blog}}</li></a>
+            <a  href="{% url 'blog_detail' blog.id %}"><li class='py-1 hover:text-blue-700' >{{blog}} >>> {{blog.author}}</li></a>
         {% endfor %}
         {% else %}
         <li>No blogs yet</li>

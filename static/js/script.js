@@ -11,3 +11,11 @@ sidebarBtn.addEventListener('click',()=>{
     sidebar.classList.toggle('hidden')      
 });
 
+
+document.getElementById('main').onclick = () =>{
+    if(!sidebar.classList.contains('hidden'))
+        sidebar.classList.add('hidden')
+    if(!navProfileIconMenu.classList.contains('hidden'))
+        navProfileIconMenu.classList.add('hidden')
+    
+}
