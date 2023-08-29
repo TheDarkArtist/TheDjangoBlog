@@ -4,6 +4,12 @@
 
 {% block content %}
 
+<div class="  border-black flex w-full justify-center p-1 mt-2 mb-4">
+    <form action="" method="get"> {% csrf_token %}
+        <input class="border border-slate-900 text-slate-900 w-96 rounded-full" type="text" name="title" id="title" placeholder='Search for Blog Title'>
+        
+    </form>
+</div>
 <div class="w-full p-2 bg-zinc-500 text-cyan-500 flex justify-end" id='access-bar'>
     <a class='mr-4 hover:text-cyan-400' href="{% url 'blog' %}">All</a>
     <a class='mr-4 hover:text-cyan-400' href="{% url 'blog_search' %}">Search</a>
@@ -31,3 +37,8 @@
 
 <a href="#access-bar"><div class='h-8 w-8 bg-cyan-600 flex items-center justify-center border border-sky-600 text-cyan-400 opacity-90 text-3xl right-4 bottom-4 fixed'>&#8593;</div></a>
 {% endblock content %}
+
+
+
+
+

@@ -1,109 +1,116 @@
 {% load static %} {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>TheDjangoBlog | {% block title %}{% endblock title %}</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    {% tailwind_css %}
-  </head>
 
-  <body class="bg-slate-200 text-cyan-800">
-    <div
-      class="fixed z-30 w-full h-12 flex justify-between items-center bg-cyan-500 text-cyan-950"
-    >
-      <div class="p-2 md:text-2xl font-bold"><img id='sidebarBtn' class='cursor-pointer' width="30" height="30" src="https://img.icons8.com/ios-filled/50/menu--v1.png" alt="menu--v1"/></div>
-      <div class="p-2 md:text-2xl font-bold"><a href='{% url 'home' %}'>TheDjangoBlog</a></div>
-      <div class="flex">
-        <ul class="flex pr-1 sm:hidden md:flex lg:flex">
-          <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
-            <a href="{% url 'home' %}">Home</a>
-          </li>
-          <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
-            <a href="{% url 'blog' %}">Blog</a>
-          </li>
-          <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
-            <a href="{% url 'about' %}">About</a>
-          </li>
-          <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
-            <a href="{% url 'contact' %}">Contact</a>
-          </li>
-          <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
-            <a href="{% url 'apihome' %}">API</a>
-          </li>
-        </ul>
-        <span class="flex cursor-pointer" id="navProfileIcon">
-          <span class="py-4 font-extrabold"
-            ><img
-              width="10"
-              height="10"
-              src="https://img.icons8.com/ios/50/expand-arrow--v1.png"
-              alt="expand-arrow--v1"
-          /></span>
+<head>
+  <title>TheDjangoBlog | {% block title %}{% endblock title %}</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  {% tailwind_css %}
+</head>
+
+<body class="bg-slate-200 text-cyan-800">
+  <div class="fixed z-30 w-full h-12 flex justify-between items-center bg-cyan-500 text-cyan-950">
+    <div class="p-2 md:text-2xl font-bold"><img id='sidebarBtn' class='cursor-pointer' width="30" height="30"
+        src="https://img.icons8.com/ios-filled/50/menu--v1.png" alt="menu--v1" /></div>
+    <div class="p-2 md:text-2xl sm:text-[20px] font-bold"><a href='{% url 'home' %}'>TheDjangoBlog </a></div>
+    <div class="flex">
+      <ul class="flex pr-1 sm:hidden md:flex lg:flex">
+        <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
+          <a href="{% url 'home' %}">Home</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
+          <a href="{% url 'blog' %}">Blog</a>
+        </li>
+        {% endif %}
+        <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
+          <a href="{% url 'about' %}">About</a>
+        </li>
+        <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
+          <a href="{% url 'contact' %}">Contact</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="p-2 hover:text-gray-950 hover:cursor-pointer">
+          <a href="{% url 'apihome' %}">API</a>
+        </li>
+        {% endif %}
+      </ul>
+      <span class="flex cursor-pointer" id="navProfileIcon">
+        <span class="py-4 font-extrabold"><img width="10" height="10"
+            src="https://img.icons8.com/ios/50/expand-arrow--v1.png" alt="expand-arrow--v1" /></span>
+        {% if request.user.is_authenticated %}
+        <img class="rounded-full p-[3px] h-10 w-[40px]" src="{% static 'img/profile.png' %}" alt="img" />
+        {% else %}
+        <img class="rounded-full m-1 h-10" src="{% static 'logo/profile_template.png' %}" alt="img" />
+        {% endif %}
+      </span>
+      <div class="hidden text-sm border  m-2 p-1 fixed w-52 right-2 rounded bg-cyan-400 top-14 "
+        id="navProfileIconMenu">
+        <ul class='border border-cyan-700 m-1 p-1 font-bold'>
           {% if request.user.is_authenticated %}
-          <img
-            class="rounded-full p-[3px] h-10 w-[40px]"
-            src="{% static 'img/profile.png' %}"
-            alt="img"
-          />
-          {% else %}
-          <img
-            class="rounded-full m-1 h-10"
-            src="{% static 'logo/profile_template.png' %}"
-            alt="img"
-          />
-          {% endif %}
-        </span>
-
-        <div class="fixed w-52 right-2 rounded bg-fuchsia-50 top-14">
-          <div
-            class="hidden text-sm border border-cyan-700 m-2 p-1 h-full"
-            id="navProfileIconMenu"
-          >
-            <ul>
-              {% if request.user.is_authenticated %}
-              <div class="flex">
-                <img
-                  class="rounded-full h-10 p-1"
-                  src="{% static 'img/profile.png' %}"
-                  alt=""
-                />
-                <span>
-                  <div>{{request.user.first_name}} {{request.user.last_name}}</div>
-                  <div>{{request.user}}</div>
-                </span>
-              </div>
-              <div class='border border-black w-full'> </div>
-              <a href="{% url 'logout' %}"
-                ><li class="hover:bg-cyan-600 p-1">Logout</li></a
-              >
-              {% else %}
-              <a href="{% url 'login' %}"
-                ><li class="hover:bg-cyan-600 p-1">Login</li></a
-              >
-              <a href="{% url 'signup' %}"
-                ><li class="hover:bg-cyan-600 p-1">Sign Up</li></a
-              >
-              {% endif %}
-            </ul>
+          <div class="flex m-1 ">
+            <img class="rounded-full h-10 w-10   " src="{% static 'img/profile.png' %}" alt="" />
+            <span class='pl-2'>
+              <div>{{request.user.first_name}} {{request.user.last_name}}</div>
+              <div>{{request.user}}</div>
+            </span>
           </div>
-        </div>
+          <div class='h-[1px] my-1 w-full bg-slate-500'></div>
+          <a href="{% url 'logout' %}">
+            <li class="hover:bg-cyan-600 p-1">Logout</li>
+          </a>
+          <a href="{% url 'logout' %}">
+            <li class="hover:bg-cyan-600 p-1">My Blogs</li>
+          </a>
+          {% else %}
+          <a href="{% url 'login' %}">
+            <li class="hover:bg-cyan-600 p-1">Login</li>
+          </a>
+          <a href="{% url 'signup' %}">
+            <li class="hover:bg-cyan-600 p-1">Sign Up</li>
+          </a>
+          {% endif %}
+          <div class='h-[1px] my-1 w-full bg-slate-500'></div>
+          <label class='p-1' for="dark">Dark Mode <input class='mx-2' type="checkbox" name="dark" id="dark"></label>
+          
+        </ul>
       </div>
+
     </div>
-    <div class="pt-12">
-      <div id='sidebar' class='hidden opacity-95 z-10 fixed flex flex-col w-80 min-h-[96vh] bg-cyan-700 text-white'>
-        <a href="{% url 'home' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>Home</div></a>
-        <a href="{% url 'blog' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>Blog</div></a>
-        <a href="{% url 'about' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>About</div></a>
-        <a href="{% url 'contact' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>Contact</div></a>
-        <a href="{% url 'apihome' %}"><div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>API</div></a>
-        
-      </div>
-      <div id='main' class="border border-cyan-500 p-1 m-2 min-h-[92vh]">
-        {% block content %}{% endblock content %}
-      </div>
+  </div>
+  
+  <div class="pt-12">
+    <div id='sidebar' class='hidden opacity-95 z-10 fixed flex-col w-80 min-h-[96vh] bg-cyan-700 text-white'>
+      <a href="{% url 'home' %}">
+        <div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'> Home</div>
+      </a>
+      <a href="{% url 'blog' %}">
+        <div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>Blog</div>
+      </a>
+      <a href="{% url 'about' %}">
+        <div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>About</div>
+      </a>
+      <a href="{% url 'contact' %}">
+        <div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>Contact</div>
+      </a>
+      <a href="{% url 'apihome' %}">
+        <div class=' p-2 cursor-pointer hover:bg-cyan-800 indent-4'>API</div>
+      </a>
+
     </div>
-    <script src="{% static 'js/script.js' %}"></script>
-  </body>
+    <div id='main' class="border border-cyan-500 p-1 m-2 min-h-[92vh]">
+      {% block content %}{% endblock content %}
+    </div>
+  </div>
+
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://kit.fontawesome.com/1fe7a94bfe.js" crossorigin="anonymous"></script>
+</body>
+
 </html>
+
+
+
+
