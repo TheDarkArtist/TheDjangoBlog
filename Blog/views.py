@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView, DetailView, ListView, CreateView, DeleteView, UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
-from .models import BlogPost
+from .models import BlogPost, Contact
 
 class HomeView(ListView):
     model = BlogPost
@@ -50,7 +50,6 @@ class BlogSearchView(ListView):
             object_list = self.model.objects.none()
         return object_list
     
-
 class BlogDetailView(DetailView):
     model = BlogPost
     template_name = "blog_detail.html"
@@ -59,5 +58,11 @@ class BlogDetailView(DetailView):
 class AboutView(TemplateView):
     template_name = "about.html"
 
-class ContactView(TemplateView):
+class ContactView(CreateView):
+    model = Contact
+    fields = '__all__'
+    success_url = '200'
     template_name = "contact.html"
+
+class Contact200View(TemplateView):
+    template_name = "contact_ok.html"

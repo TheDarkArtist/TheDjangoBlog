@@ -2,4 +2,36 @@
 
 {% block title %}About{% endblock title %}
 
-{% block content %}contact{% endblock content %}
+{% block content %}
+<div class='text-2xl' >Contact Me</div>
+<dir class='bg-cyan-600 w-full h-[1px] mb-6' ></dir>
+<div class='flex sm:flex-col  md:flex-row' >
+<div class=" md:border-r border-zinc-800 md:w-[40%] min-h-96 p-2 text-black">
+    <div class='underline pb-2'>Contact Info</div>
+    <div>
+        <div>Name: Kushagra Sharma</div>
+        <div>Email: sparrow.kushagra@gmail.com</div>
+        <div>Phone: +917426072284</div> indent-3
+        <div mr-2  class='underline mt-6 mb-1'>Social Links</div>
+        <div class="flex flex-col w-[90%]">
+            <a href='https://github.com/TheDarkArtist' target='_blank'><div class=" rounded border border-sky-700 p-1 w-full bg-cyan-600 m-[2px] indent-3"> <i class=" mr-2 fa-brands fa-github"></i> Github</div></a>
+            <a href='https://www.linkedin.com/in/thedarkartist/' target='_blank'><div class=" rounded border border-sky-700 p-1 w-full bg-cyan-600 m-[2px] indent-3"> <i class=" mr-2 fa-brands fa-linkedin"></i> LinkedIn</div></a>
+            <a href='https://www.facebook.com/profile.php?id=100043436298708' target='_blank'><div class=" rounded border border-sky-700 p-1 w-full bg-cyan-600 m-[2px] indent-3"> <i class=" mr-2 fa-brands fa-facebook"></i> Facebook</div></a>
+            <a href='https://www.instagram.com/6b757368/' target='_blank'><div class=" rounded border border-sky-700 p-1 w-full bg-cyan-600 m-[2px] indent-3"> <i class=" mr-2 fa-brands fa-instagram"></i> Instagram</div></a>
+            <a href='https://twitter.com/6b757368' target='_blank'><div class=" rounded border border-sky-700 p-1 w-full bg-cyan-600 m-[2px] indent-3"> <i class=" mr-2 fa-brands fa-twitter"></i> Twitter</div></a>
+
+        </div>
+    </div>
+    
+</div>
+<div class="w-full  flex justify-center">
+    <form class='flex flex-col w-[80%]' action="" method="post">
+        <div class='text-2xl py-2 text-cyan-950' >You can also fill the form and i will contact you shortly.</div>
+        {% csrf_token %}
+        {{form}}
+        <button class='self-start mt-4 bg-blue-500 hover:bg-blue-800 text-white px-4 py-1' type="submit">Send</button>
+    </form>
+</div>
+</div>
+
+{% endblock content %}

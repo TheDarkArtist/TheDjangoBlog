@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-
+from phonenumber_field.modelfields import PhoneNumberField
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=150)
@@ -19,3 +19,21 @@ class BlogPost(models.Model):
     # def get_absolute_url(self):
     #     return reverse("BlogPost_detail", kwargs={"pk": self.pk})
 
+
+
+
+class Contact(models.Model):
+    name = models.CharField(("name"), max_length=150, blank=False)
+    email = models.EmailField(("email"), max_length=254)
+    phone = PhoneNumberField(("phone"))
+    query = models.TextField(("query"), blank=False)
+
+    class Meta:
+        verbose_name = ("Contact")
+        verbose_name_plural = ("Contacts")
+
+    def __str__(self):
+        return self.name
+
+    # def get_absolute_url(self):
+    #     return reverse("Contact_detail", kwargs={"pk": self.pk})

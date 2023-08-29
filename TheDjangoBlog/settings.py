@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'theme',
     'django_browser_reload',
     'drf_spectacular',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [

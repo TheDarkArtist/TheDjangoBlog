@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('contact/', views.ContactView.as_view(), name='contact'),
+    path('contact/200/', views.Contact200View.as_view(), name='contact_ok'),
     path('blog/', views.BlogListView.as_view(), name='blog'),
     path('blog/create/', views.BlogCreateView.as_view(), name='blog_create'),
     path('blog/update/<pk>/', views.BlogUpdateView.as_view(), name='blog_update'),
