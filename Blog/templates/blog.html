@@ -18,7 +18,7 @@
             <div class='text-[12px]'>Last Updated - {{blog.updated_at}}</div>
             <div class='text-[12px] ' >Author : {{blog.author}}</div>
             <div class='w-full flex justify-end text-sm'>
-                {% if request.user == blog.author %}
+                {% if request.user == blog.author or request.user.is_superuser %}
                 <a class='pr-2 text-cyan-900 hover:text-zinc-800' href="{% url 'blog_delete' blog.id %}">Delete</a>
                 <a class='pr-2 text-cyan-900 hover:text-zinc-800' href="{% url 'blog_update' blog.id %}">Update</a>
                 {% endif %}
