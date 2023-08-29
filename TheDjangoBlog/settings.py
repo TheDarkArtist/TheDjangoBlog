@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'dj_rest_auth.registration',
@@ -163,7 +164,10 @@ CORS_ORIGIN_WHITELIST = (
 "http://localhost:8000",
 )
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://0.0.0.0:8000"
+]
 
 # Rest Framework Configs
 REST_FRAMEWORK = {
