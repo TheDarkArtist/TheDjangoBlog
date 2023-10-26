@@ -68,7 +68,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
-
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'TheDjangoBlog.urls'
@@ -185,7 +185,7 @@ REST_FRAMEWORK = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
 
-# Auth User Model 
+# Auth User Model
 AUTH_USER_MODEL = 'Accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
